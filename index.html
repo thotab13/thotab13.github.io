@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhuvana Chandra Thota - AI Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent: #8b5cf6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1a1f3a 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-text h2 {
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeIn 1s ease-out 0.4s backwards;
+        }
+
+        .code-block {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .code-line {
+            margin: 0.5rem 0;
+        }
+
+        .keyword {
+            color: #c792ea;
+        }
+
+        .function {
+            color: #82aaff;
+        }
+
+        .string {
+            color: #c3e88d;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+        }
+
+        .skill-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 0.8rem 0;
+            color: var(--text-secondary);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.3);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            padding: 1.5rem;
+        }
+
+        .project-header h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+        }
+
+        .project-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: rgba(99, 102, 241, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--primary);
+        }
+
+        /* Experience */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 0;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid var(--bg-dark);
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .timeline-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg-card);
+            border-radius: 8px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            border-color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">BCT</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Bhuvana Chandra Thota</h1>
+                    <h2>AI Engineer & Researcher</h2>
+                    <p>M.Sc. Artificial Intelligence student specializing in Computer Vision, NLP, and Deep Learning. Passionate about building intelligent systems that solve real-world problems.</p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">View Projects</a>
+                        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="code-block">
+                        <div class="code-line"><span class="keyword">class</span> <span class="function">AIEngineer</span>:</div>
+                        <div class="code-line">    <span class="keyword">def</span> __init__(self):</div>
+                        <div class="code-line">        self.name = <span class="string">"Bhuvana"</span></div>
+                        <div class="code-line">        self.skills = [</div>
+                        <div class="code-line">            <span class="string">"Deep Learning"</span>,</div>
+                        <div class="code-line">            <span class="string">"Computer Vision"</span>,</div>
+                        <div class="code-line">            <span class="string">"NLP"</span></div>
+                        <div class="code-line">        ]</div>
+                        <div class="code-line">        self.passion = <span class="string">"Innovation"</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Programming</h3>
+                    <div class="skill-item">
+                        <span>Python</span>
+                        <span>Advanced</span>
+                    </div>
+                    <div class="skill-item">
+                        <span>Java</span>
+                        <span>Intermediate</span>
+                    </div>
+                    <div class="skill-item">
+                        <span>SQL</span>
+                        <span>Intermediate</span>
+                    </div>
+                    <div class="skill-item">
+                        <span>JavaScript</span>
+                        <span>Intermediate</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>AI & Machine Learning</h3>
+                    <div class="skill-item">
+                        <span>Deep Learning</span>
+                        <span>Intermediate</span>
+                    </div>
+                    <div class="skill-item">
+                        <span>Computer Vision</span>
+                        <span>Intermediate</span>
+                    </div>
+                    <div class="skill-item">
+                        <span>NLP</span>
+                        <span>Intermediate</span>
+                    </div>
+                    <div class="skill-item">
+                        <span>Machine Learning</span>
+                        <span>Intermediate</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>Tools & Frameworks</h3>
+                    <div class="skill-item">
+                        <span>PySpark</span>
+                        <span>✓</span>
+                    </div>
+                    <div class="skill-item">
+                        <span>ROS</span>
+                        <span>Beginner</span>
+                    </div>
+                    <div class="skill-item">
+                        <span>SAM2</span>
+                        <span>✓</span>
+                    </div>
+                    <div class="skill-item">
+                        <span>HTML/CSS</span>
+                        <span>Intermediate</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Mobile Robot Human-Robot Dialogue</h3>
+                        <p style="font-size: 0.9rem; opacity: 0.9;">October 2025 - Present</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Building an ambiguity-aware vision language system using Molmo to detect unclear object instructions and resolve user intent through a two-stage reasoning pipeline.</p>
+                        <div class="project-tags">
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">NLP</span>
+                            <span class="tag">SAM2</span>
+                            <span class="tag">Molmo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>DeepVision Attendance System</h3>
+                        <p style="font-size: 0.9rem; opacity: 0.9;">IEEE Published</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Applied HOG and deep learning methods to improve attendance accuracy by 15% and reduce false positives by 20%. Published at IEEE Global Conference.</p>
+                        <div class="project-tags">
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">HOG</span>
+                            <span class="tag">Recognition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Predictive Meteorology with PySpark</h3>
+                        <p style="font-size: 0.9rem; opacity: 0.9;">IEEE Published</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Analyzed NCEI weather data using PySpark to extract key temperature metrics and built time-series forecasting models for accurate weather prediction.</p>
+                        <div class="project-tags">
+                            <span class="tag">PySpark</span>
+                            <span class="tag">Time-Series</span>
+                            <span class="tag">Big Data</span>
+                            <span class="tag">Forecasting</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>AI-Driven Agronomy Platform</h3>
+                        <p style="font-size: 0.9rem; opacity: 0.9;">ICIPTM 2024</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Machine learning platform enhancing agriculture efficiency by accurately predicting crop outcomes and prices, leading to increased profitability.</p>
+                        <div class="project-tags">
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Agriculture</span>
+                            <span class="tag">Prediction</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Blackjack Strategy Optimization</h3>
+                        <p style="font-size: 0.9rem; opacity: 0.9;">Reinforcement Learning</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Developed Q-Learning and Double Q-Learning agents, improving win rate to 45.5% compared to 31% baseline across 500,000+ episodes.</p>
+                        <div class="project-tags">
+                            <span class="tag">RL</span>
+                            <span class="tag">Q-Learning</span>
+                            <span class="tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Experience & Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>M.Sc. Artificial Intelligence</h3>
+                        <div class="timeline-date">March 2025 - Present</div>
+                        <p>Technische Hochschule Würzburg-Schweinfurt</p>
+                        <p>Specializing in advanced AI techniques, computer vision, and natural language processing.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>AI Intern</h3>
+                        <div class="timeline-date">Feb 2024 - Nov 2024</div>
+                        <p>Ammachi Labs, India</p>
+                        <p>Worked on developing intelligent chatbot applications and NLP-based solutions.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>B.Tech in Artificial Intelligence</h3>
+                        <div class="timeline-date">October 2020 - June 2024</div>
+                        <p>Amrita Vishwa Vidyapeetam, India</p>
+                        <p>Foundation in AI fundamentals, machine learning, and software development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <strong>Email</strong>
+                            <p style="color: var(--text-secondary);">thotab15@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <strong>Phone</strong>
+                            <p style="color: var(--text-secondary);">+49 - 15563550165</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Location</strong>
+                            <p style="color: var(--text-secondary);">Am Hubland 16e, Würzburg</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">💻</div>
+                        <div>
+                            <strong>GitHub</strong>
+                            <p style="color: var(--text-secondary);">thotab13</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="background: var(--bg-card); padding: 2rem; border-radius: 12px; border: 1px solid rgba(99, 102, 241, 0.2);">
+                    <h3 style="margin-bottom: 1rem;">About Me</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                        I'm an AI Engineer passionate about developing intelligent systems that make a real-world impact. Currently pursuing my Master's in AI while working on cutting-edge projects in computer vision and NLP.
+                    </p>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                        <strong>Certifications:</strong> NVIDIA DLI - Fundamentals of Deep Learning
+                    </p>
+                    <p style="color: var(--text-secondary);">
+                        <strong>Languages:</strong> English (C2), Telugu, German (A2)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Bhuvana Chandra Thota. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
